@@ -16,7 +16,7 @@ export class Stage {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.0;
+    this.renderer.toneMappingExposure = 0.88;
 
     this.scene = new THREE.Scene();
     this.scene.fog = new THREE.Fog(
@@ -38,12 +38,13 @@ export class Stage {
     // Lighting is intentionally low — the world is largely emissive, and keeping
     // the lights dim gives the solid obstacles strong contrast so they don't wash
     // out against the grid and sun.
-    const hemi = new THREE.HemisphereLight(0xff66cc, 0x100225, 0.4);
+    const hemi = new THREE.HemisphereLight(0xff66cc, 0x100225, 0.22);
     this.scene.add(hemi);
-    const key = new THREE.DirectionalLight(0x9ad7ff, 0.55);
+    // a soft, low, blue-violet key (not white) so obstacle faces don't go white
+    const key = new THREE.DirectionalLight(0x6f8fd8, 0.3);
     key.position.set(-10, 22, 8);
     this.scene.add(key);
-    const rim = new THREE.PointLight(0x00e5ff, 0.8, 60, 2);
+    const rim = new THREE.PointLight(0x00e5ff, 0.45, 60, 2);
     rim.position.set(0, 6, 14);
     this.scene.add(rim);
 
