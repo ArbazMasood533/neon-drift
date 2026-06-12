@@ -87,8 +87,10 @@ export const SUN_FRAG = /* glsl */ `
     float slit = step(gapAmount, linePos);
     float mask = y > 0.5 ? 1.0 : slit;
 
+    // Kept deliberately below the bloom threshold so the sun reads as a flat
+    // disc on the horizon and doesn't throw a glowing halo / rays.
     float edge = smoothstep(0.5, 0.47, d);
-    gl_FragColor = vec4(col * mask * edge * 0.5, mask * edge);
+    gl_FragColor = vec4(col * mask * edge * 0.25, mask * edge);
   }
 `;
 
