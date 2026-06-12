@@ -1,0 +1,22 @@
+{
+  "name": "neon-drift",
+  "version": "1.0.0",
+  "description": "An endless synthwave hover-racer built with Three.js, custom GLSL and a hand-rolled HDR post-processing stack.",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve -l 5050 .",
+    "dev": "npx --yes serve -l 5050 ."
+  },
+  "keywords": [
+    "threejs",
+    "webgl",
+    "game",
+    "synthwave",
+    "glsl",
+    "shaders",
+    "postprocessing"
+  ],
+  "author": "Arbaz Masood",
+  "license": "MIT",
+  "homepage": "."
+}

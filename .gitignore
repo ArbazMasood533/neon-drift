@@ -1,0 +1,16 @@
+# dependencies (the game itself needs none — Three is loaded via CDN import map)
+node_modules/
+package-lock.json
+
+# build / tooling output
+dist/
+.cache/
+.parcel-cache/
+.vite/
+
+# editor + os cruft
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
