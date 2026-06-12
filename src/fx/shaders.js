@@ -88,7 +88,7 @@ export const SUN_FRAG = /* glsl */ `
     float mask = y > 0.5 ? 1.0 : slit;
 
     float edge = smoothstep(0.5, 0.47, d);
-    gl_FragColor = vec4(col * mask * edge * 1.7, mask * edge);
+    gl_FragColor = vec4(col * mask * edge * 1.0, mask * edge);
   }
 `;
 

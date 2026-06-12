@@ -23,9 +23,9 @@ export function buildComposer(renderer, scene, camera) {
 
   const bloom = new UnrealBloomPass(
     new THREE.Vector2(size.x, size.y),
-    0.95, // strength
-    0.65, // radius
-    0.18, // threshold — only the bright neon blooms
+    0.72, // strength — dialed back so glow doesn't wash out the obstacles
+    0.6,  // radius
+    0.24, // threshold — only the brightest neon edges bloom
   );
   composer.addPass(bloom);
 

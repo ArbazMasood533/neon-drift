@@ -143,8 +143,18 @@ export class World {
     const edges = new THREE.EdgesGeometry(box);
     for (let i = 0; i < 64; i++) {
       const g = new THREE.Group();
-      const fillMat = new THREE.MeshBasicMaterial({
-        color: 0x00e5ff, transparent: true, opacity: 0.12, depthWrite: false,
+      // Solid, opaque block: near-black faces with a faint neon sheen, lit just
+      // enough to read as a 3-D solid. The bright edges carry the neon colour.
+      // polygonOffset keeps the wireframe from z-fighting the faces.
+      const fillMat = new THREE.MeshStandardMaterial({
+        color: 0x04050d,
+        emissive: 0x00e5ff,
+        emissiveIntensity: 0.3,
+        metalness: 0.6,
+        roughness: 0.4,
+        polygonOffset: true,
+        polygonOffsetFactor: 1,
+        polygonOffsetUnits: 1,
       });
       const wireMat = new THREE.LineBasicMaterial({ color: 0x00e5ff });
       const fill = new THREE.Mesh(box, fillMat);
@@ -206,7 +216,8 @@ export class World {
     for (const lane of order) {
       const p = this._nextPillar();
       const color = pick(C.colors.neon);
-      p.userData.fillMat.color.setHex(color);
+      // keep the body dark — only the glow tint and the edges take the colour
+      p.userData.fillMat.emissive.setHex(color);
       p.userData.wireMat.color.setHex(color);
       const x = this.laneX(lane);
       p.position.set(x, C.rows.pillarH / 2, C.world.spawnZ);
